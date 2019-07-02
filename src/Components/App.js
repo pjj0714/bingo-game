@@ -1,7 +1,7 @@
 import React from "react";
 import propTypes from "prop-types";
 import { connect } from "react-redux";
-import Board from "./Board";
+import BoardContainer from "../Containers/BoardContainer";
 import * as Actions from "../Reducers";
 
 const App = ({ start, startButtonHandler, endButtonHandler }) => {
@@ -13,25 +13,37 @@ const App = ({ start, startButtonHandler, endButtonHandler }) => {
       <button type="button" onClick={endButtonHandler}>
         게임 종료하기
       </button>
-      <Board />
+      <div
+        style={{
+          border: "1px solid",
+          width: "500px",
+          height: "500px",
+          display: "flex",
+        }}
+      >
+        <BoardContainer />
+      </div>
     </div>
   );
 };
 
 App.defaultProps = {
   start: false,
+  startButtonHandler: () => console.warn("not Defiend startButtonHandler "),
+  endButtonHandler: () => console.warn("not Defiend endButtonHandler "),
 };
 
 App.propTypes = {
   start: propTypes.bool,
-  startButtonHandler: propTypes.func.isRequired,
-  endButtonHandler: propTypes.func.isRequired,
+  startButtonHandler: propTypes.func,
+  endButtonHandler: propTypes.func,
 };
 
 const mapStateToProps = state => ({
   start: state.get("start"),
   reStart: state.get("reStart"),
 });
+
 const mapDispatchToProps = dispatch => ({
   startButtonHandler: () => dispatch(Actions.startGame()),
   endButtonHandler: () => dispatch(Actions.endGame()),

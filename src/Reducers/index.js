@@ -15,7 +15,7 @@ const initialState = Map({
 export default handleActions(
   {
     [START_GAME]: (state, action) => {
-      const restartGame = state.get("restart");
+      const restartGame = state.get("reStart");
       return state.set("start", true).set("reStart", !restartGame);
     },
     [END_GAME]: (state, action) => {
