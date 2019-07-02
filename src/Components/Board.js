@@ -12,6 +12,7 @@ class Board extends React.Component {
   }
 
   componentDidMount() {
+    console.log(this.props);
     const randomList = getRandomList();
     this.setState({ list: randomList });
   }
@@ -24,9 +25,20 @@ class Board extends React.Component {
     }
   }
 
+  isClickHandler(idx) {
+    const { list } = this.state;
+    const copyList = [...list];
+    copyList[idx].isClicked = true;
+
+    this.setState({
+      list: copyList,
+    });
+  }
+
   render() {
     const { list } = this.state;
-    const { start } = this.props;
+    const { start, player } = this.props;
+    const { isClickHandler } = this;
     const renderList = list.map((el, idx) => {
       return (
         <BoardDetail
@@ -34,12 +46,22 @@ class Board extends React.Component {
           num={el.num}
           isClicked={el.isClicked}
           idx={idx}
+          player={player}
+          isClickHandler={isClickHandler.bind(this)}
         />
       );
     });
 
     return (
-      <div style={{ display: "flex", flexWrap: "wrap" }}>
+      <div
+        style={{
+          border: "1px solid",
+          width: "600px",
+          height: "600px",
+          display: "flex",
+          flexWrap: "wrap",
+        }}
+      >
         {start ? renderList : ""}
       </div>
     );
@@ -53,6 +75,7 @@ Board.defaultProps = {
 Board.propTypes = {
   start: propTypes.bool,
   reStart: propTypes.bool,
+  player: propTypes.number.isRequired,
 };
 
 export default Board;

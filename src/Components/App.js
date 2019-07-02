@@ -15,13 +15,12 @@ const App = ({ start, startButtonHandler, endButtonHandler }) => {
       </button>
       <div
         style={{
-          border: "1px solid",
-          width: "500px",
-          height: "500px",
           display: "flex",
+          justifyContent: "space-around",
         }}
       >
-        <BoardContainer />
+        <BoardContainer player={1} />
+        <BoardContainer player={2} />
       </div>
     </div>
   );
