@@ -2,10 +2,12 @@
   border: 1px solid;
   width: 19.6%;
   height: 19.6%;
+  cursor: pointer;
 }
 .item2 {
   border: 1px solid;
   width: 19.6%;
   height: 19.6%;
   color: red;
+  cursor: pointer;
 }

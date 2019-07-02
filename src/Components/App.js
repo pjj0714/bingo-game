@@ -8,7 +8,7 @@ import styled from "./App.css";
 
 const App = ({ start, startButtonHandler, endButtonHandler }) => {
   return (
-    <div>
+    <div style={{ textAlign: "center" }}>
       <button type="button" onClick={startButtonHandler}>
         {start ? `게임 재시작하기` : `게임 시작하기`}
       </button>
