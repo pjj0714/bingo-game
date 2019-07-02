@@ -3,6 +3,8 @@ import propTypes from "prop-types";
 import BoardDetail from "./BoardDetail";
 import getRandomList from "../utils";
 
+import styled from "./Board.css";
+
 class Board extends React.Component {
   constructor(props) {
     super(props);
@@ -12,7 +14,6 @@ class Board extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props);
     const randomList = getRandomList();
     this.setState({ list: randomList });
   }
@@ -53,16 +54,9 @@ class Board extends React.Component {
     });
 
     return (
-      <div
-        style={{
-          border: "1px solid",
-          width: "600px",
-          height: "600px",
-          display: "flex",
-          flexWrap: "wrap",
-        }}
-      >
-        {start ? renderList : ""}
+      <div>
+        <div>{`Player : ${player}P`}</div>
+        <div className={styled.container}>{start ? renderList : ""}</div>
       </div>
     );
   }

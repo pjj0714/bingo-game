@@ -1,0 +1,17 @@
+.container {
+  border: 1px solid;
+  width: 600px;
+  height: 600px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* 
+style={{
+    border: "1px solid",
+    width: "600px",
+    height: "600px",
+    display: "flex",
+    flexWrap: "wrap",
+    justifyItems: "center",
+  }} */

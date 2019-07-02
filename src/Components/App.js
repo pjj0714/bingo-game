@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import BoardContainer from "../Containers/BoardContainer";
 import * as Actions from "../Reducers";
 
+import styled from "./App.css";
+
 const App = ({ start, startButtonHandler, endButtonHandler }) => {
   return (
     <div>
@@ -13,12 +15,7 @@ const App = ({ start, startButtonHandler, endButtonHandler }) => {
       <button type="button" onClick={endButtonHandler}>
         게임 종료하기
       </button>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-around",
-        }}
-      >
+      <div className={styled.container}>
         <BoardContainer player={1} />
         <BoardContainer player={2} />
       </div>

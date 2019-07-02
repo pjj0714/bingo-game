@@ -3,6 +3,8 @@ import propTypes from "prop-types";
 import { connect } from "react-redux";
 import * as Actions from "../Reducers";
 
+import styled from "./BoardDetail.css";
+
 const BoardDetail = props => {
   const {
     num,
@@ -25,16 +27,7 @@ const BoardDetail = props => {
 
   return (
     <div
-      style={
-        isClicked
-          ? {
-              border: "1px solid",
-              width: "19.5%",
-              height: "19.6%",
-              color: "red",
-            }
-          : { border: "1px solid", width: "19.5%", height: "19.6%" }
-      }
+      className={isClicked ? styled.item2 : styled.item1}
       onClick={() => clickHandler(idx)}
     >
       {num}
