@@ -9,26 +9,30 @@ const BoardDetail = props => {
   const {
     num,
     isClicked,
-    idx,
-    isClickHandler,
     turn,
     turnCheckHandler,
     player,
+    onClickList,
+    total,
   } = props;
 
   const clickHandler = () => {
-    if (player === turn) {
-      isClickHandler(idx);
-      turnCheckHandler();
+    if (isClicked) {
+      alert("이미 누르신 숫자입니다.");
       return;
     }
-    alert("당신 차례가 아닙니다.");
+    if (player === turn) {
+      onClickList(num);
+      turnCheckHandler();
+    } else {
+      alert("당신 차례가 아닙니다.");
+    }
   };
 
   return (
     <div
       className={isClicked ? styled.item2 : styled.item1}
-      onClick={() => clickHandler(idx)}
+      onClick={() => clickHandler()}
     >
       {num}
     </div>
@@ -38,24 +42,24 @@ const BoardDetail = props => {
 BoardDetail.defaultProps = {
   num: 1,
   isClicked: false,
-  idx: 1,
 };
 
 BoardDetail.propTypes = {
   num: propTypes.number,
   isClicked: propTypes.bool,
-  idx: propTypes.number,
-  isClickHandler: propTypes.func.isRequired,
   player: propTypes.number.isRequired,
   turn: propTypes.number.isRequired,
   turnCheckHandler: propTypes.func.isRequired,
+  onClickList: propTypes.func.isRequired,
 };
 
 export default connect(
   state => ({
     turn: state.get("turn"),
+    clickList: state.get("clickList").toJS(),
   }),
   dispatch => ({
     turnCheckHandler: () => dispatch(Actions.playerTurn()),
+    onClickList: num => dispatch(Actions.click(num)),
   }),
 )(BoardDetail);

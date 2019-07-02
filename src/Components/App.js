@@ -8,13 +8,23 @@ import styled from "./App.css";
 
 const App = ({ start, startButtonHandler, endButtonHandler }) => {
   return (
-    <div style={{ textAlign: "center" }}>
-      <button type="button" onClick={startButtonHandler}>
-        {start ? `게임 재시작하기` : `게임 시작하기`}
-      </button>
-      <button type="button" onClick={endButtonHandler}>
-        게임 종료하기
-      </button>
+    <div className={styled.all}>
+      <div className={styled.appButton}>
+        <button
+          type="button"
+          className={styled.button}
+          onClick={startButtonHandler}
+        >
+          {start ? `게임 재시작하기` : `게임 시작하기`}
+        </button>
+        <button
+          type="button"
+          className={styled.button}
+          onClick={endButtonHandler}
+        >
+          게임 종료하기
+        </button>
+      </div>
       <div className={styled.container}>
         <BoardContainer player={1} />
         <BoardContainer player={2} />
