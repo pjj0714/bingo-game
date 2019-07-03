@@ -1,14 +1,12 @@
-.all {
-  text-align: center;
-}
-
 .container {
   display: flex;
   justify-self: center;
   justify-content: space-around;
+  text-align: center;
 }
 
 .appButton {
+  text-align: center;
   margin-bottom: 40px;
   font-size: xx-large;
 }

@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 // eslint-disable-next-line import/no-named-as-default
 import Board from "../Components/Board";
+import * as Actions from "../Reducers";
 
 const mapStateToProps = state => ({
   start: state.get("start"),
@@ -9,4 +10,9 @@ const mapStateToProps = state => ({
   clickList: state.get("clickList").toJS(),
 });
 
-export default connect(mapStateToProps)(Board);
+export default connect(
+  mapStateToProps,
+  dispatch => ({
+    endGame: () => dispatch(Actions.endGame()),
+  }),
+)(Board);

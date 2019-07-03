@@ -1,5 +1,5 @@
 import React from "react";
-import propTypes from "prop-types";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import BoardContainer from "../Containers/BoardContainer";
 import * as Actions from "../Reducers";
@@ -8,7 +8,7 @@ import styled from "./App.css";
 
 const App = ({ start, startButtonHandler, endButtonHandler }) => {
   return (
-    <div className={styled.all}>
+    <div>
       <div className={styled.appButton}>
         <button
           type="button"
@@ -40,9 +40,9 @@ App.defaultProps = {
 };
 
 App.propTypes = {
-  start: propTypes.bool,
-  startButtonHandler: propTypes.func,
-  endButtonHandler: propTypes.func,
+  start: PropTypes.bool,
+  startButtonHandler: PropTypes.func,
+  endButtonHandler: PropTypes.func,
 };
 
 const mapStateToProps = state => ({

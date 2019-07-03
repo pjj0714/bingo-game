@@ -29,7 +29,10 @@ export default handleActions(
         .set("clickList", List([]));
     },
     [END_GAME]: state => {
-      return state.set("start", false).set("turn", 1);
+      return state
+        .set("start", false)
+        .set("turn", 1)
+        .set("clickList", List([]));
     },
     [PLAYER_TURN]: state => {
       const turn = state.get("turn");
